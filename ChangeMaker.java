@@ -16,9 +16,6 @@ public class ChangeMaker
     public static void main(String[] args) 
     {
         int change;
-        int afterQuarters;
-        int afterNickles;
-        int afterDimes;
         int quarters;
         int dimes;
         int nickles;
@@ -27,14 +24,14 @@ public class ChangeMaker
         System.out.println("Please enter the amount of change: ");
         Scanner in = new Scanner(System.in);
         change = in.nextInt();
-        afterQuarters = change % 25; 
-        afterDimes = afterQuarters % 10;
-        afterNickles = afterDimes % 5;
         
         quarters = (change/25);
-        dimes = afterQuarters / 10;
-        nickles = afterDimes / 5;
-        pennies = afterNickles;
+        change = change % 25;
+        dimes = change/10;
+        change %= 10;
+        nickles = change/5;
+        change %= 5; 
+        pennies = change;
         
         System.out.println("The amount of quarters is: " + quarters);
         System.out.println("The amount of dimes is: " + dimes);
