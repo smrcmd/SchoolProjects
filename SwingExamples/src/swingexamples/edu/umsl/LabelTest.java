@@ -1,0 +1,72 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package swingexamples.edu.umsl;
+
+import java.awt.*;
+import java.awt.event.*;
+ 
+// Java extension packages
+import javax.swing.*;
+ 
+public class LabelTest extends JFrame {
+   private JLabel label1, label2, label3;
+ 
+   // set up GUI
+   public LabelTest()
+   {
+      super( "Testing JLabel" );
+ 
+   }
+ 
+   public void buildInterface()
+   {
+   
+      // get content pane and set its layout
+      Container myContainer = getContentPane();
+      //FlowLayout fl = new FlowLayout(); is the same as below
+      myContainer.setLayout( new FlowLayout() );
+ 
+      // JLabel constructor with a string argument
+      label1 = new JLabel( "Label with text" );
+      label1.setToolTipText( "This is label1" );
+      myContainer.add( label1 );
+ 
+      // JLabel constructor with string, Icon and
+      // alignment arguments
+      Icon bug = new ImageIcon( "bug1.gif" );
+      label2 = new JLabel( "Label with text and icon",bug, SwingConstants.LEFT );
+      label2.setToolTipText( "This is label2" );
+      myContainer.add( label2 );
+ 
+      // JLabel constructor no arguments
+      label3 = new JLabel();
+      label3.setText( "Label with icon and text at bottom" );
+      label3.setIcon( bug );
+      label3.setHorizontalTextPosition( SwingConstants.CENTER );
+      label3.setVerticalTextPosition( SwingConstants.BOTTOM );
+      label3.setToolTipText( "This is label3" );
+      myContainer.add( label3 );
+ 
+      setSize( 275, 170 );
+      setVisible( true );
+   }
+   // execute application
+   public static void main( String args[] )
+   {
+      LabelTest application = new LabelTest();
+      application.buildInterface();
+      application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//      application.addWindowListener(new WindowAdapter()
+//                                {@Override
+// public void windowClosing( WindowEvent event )
+//                                    {
+//                                          System.exit( 0 );
+//                                    }
+// 
+//                              }
+//                  );
+   }
+}  // end class LabelTest

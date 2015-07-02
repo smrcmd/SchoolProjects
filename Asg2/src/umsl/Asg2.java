@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
 import java.io.*;
+import java.text.NumberFormat;
 /**
  *
  * @author Sophie
@@ -21,6 +22,7 @@ public class Asg2 implements Serializable
     public double interest = 1.05;
     public double newBalInt;
     public double balInt = 0;
+    NumberFormat formatter = NumberFormat.getCurrencyInstance();
     
     
 //    public void setBalance(double b1){
@@ -69,7 +71,8 @@ public class Asg2 implements Serializable
             }
             else
             {
-                System.out.println("Your current balance is " + balance);
+                System.out.println("Your current balance is: ");
+                System.out.println(formatter.format(balance));
                 System.out.println("You have insufficient funds. Please make a deposit.");
             }
         }
@@ -124,7 +127,8 @@ public class Asg2 implements Serializable
                     balance = newBalInt;
                     count++;
                 }
-                System.out.println("Your new balance with interest is " + balance + ".");
+                System.out.println("Your new balance with interest is: ");
+                System.out.println(formatter.format(balance));
             }
         else
             {
@@ -138,25 +142,30 @@ public class Asg2 implements Serializable
     public double deposit(double balance)
     {
         double depositAMT;
-        System.out.println("Your available balance is " + balance + ".");
+        System.out.println("Your available balance is:");
+        System.out.println(formatter.format(balance));
         System.out.println("Please enter amount to deposit. Ex: 200.05");
         Scanner in = new Scanner(System.in);
         depositAMT = in.nextDouble();
         balance = balance + depositAMT;
         System.out.println("Your deposit amount was " + depositAMT + ".");
-        System.out.println("Your new balance is " + balance);
+        System.out.println("Your new balance is: ");
+        System.out.println(formatter.format(balance));
         return(balance);
     }
     
     public double withdraw(double balance)
     {
         double withdrawAMT;
-        System.out.println("Your available balance is " + balance + ". Please enter amount to withdraw. Ex: 200.05");
+        System.out.println("Your available balance is: ");
+        System.out.println(formatter.format(balance));
+        System.out.println(". Please enter amount to withdraw. Ex: 200.05");
         Scanner in = new Scanner(System.in);
         withdrawAMT = in.nextDouble();
         System.out.println("Your withdrawal amount is " + withdrawAMT + ".");
         balance = balance - withdrawAMT;
-        System.out.println("Your new balance is " + balance);
+        System.out.println("Your new balance is: ");
+        System.out.println(formatter.format(balance));
         return(balance);
     }
     
@@ -182,7 +191,8 @@ public class Asg2 implements Serializable
             balInt = tryAgain;
         }
         balance = balInt;
-        System.out.println("Your available balance is " + balance + ".");
+        System.out.println("Your available balance is: ");
+        System.out.println(formatter.format(balance));
         return(balance);
     } 
     
